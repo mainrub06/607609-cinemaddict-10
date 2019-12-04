@@ -23,5 +23,4 @@ const renderComponents = () => {
   renderHTML(films, $main);
 };
 
-
-renderComponents();
+renderComponents(); // временно
