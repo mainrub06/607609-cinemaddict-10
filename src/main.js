@@ -3,7 +3,6 @@ import account from "./components/account.js";
 import menu from "./components/menu.js";
 import sort from "./components/sort.js";
 import films from "./components/films.js";
-import card from "./components/card.js";
 
 const doc = document;
 const $header = doc.querySelector(`.header`);
@@ -23,5 +22,4 @@ const renderComponents = () => {
   renderHTML(films, $main);
 };
 
-
-renderComponents();
+renderComponents(); // временно
