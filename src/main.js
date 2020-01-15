@@ -4,12 +4,14 @@ import account from "./components/account.js";
 import menu from "./components/menu.js";
 import sort from "./components/sort.js";
 
+
 const AUTHORIZATION = `Basic er883jdzbdw=${Math.random()}`;
 const END_POINT = `https://htmlacademy-es-9.appspot.com/cinemaddict/`;
-const api = new API({
+const storage = new API({
   endPoint: END_POINT,
   authorization: AUTHORIZATION
 });
+
 
 const doc = document;
 const $header = doc.querySelector(`.header`);
@@ -33,11 +35,13 @@ const renderComponents = () => {
   renderBefore(menu, $main);
   renderBefore(sort, $main);
 
-  api.getMovies();
-  api.getMoviesExtraLeft();
-  api.getMoviesExtraRight();
+  storage.getMovies();
+  storage.getMoviesExtraLeft();
+  storage.getMoviesExtraRight();
 };
 
 
+
 renderComponents();
-api.getComments(5);
+
+storage.getComments(5);
