@@ -13,9 +13,12 @@ export const parseDuration = (minutes) => {
   return minutes > 60 ? getHours(minutes) : getMins(minutes);
 }
 
-
 export const createElement = function (element) {
   const $el = document.createElement(`template`);
   $el.innerHTML = element;
   return $el.content;
+};
+
+export const removeElement = function (element) {
+  document.querySelector(element).remove();
 };
