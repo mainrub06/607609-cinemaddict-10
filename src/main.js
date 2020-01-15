@@ -1,25 +1,34 @@
+import API from "./data";
 import search from "./components/search.js";
 import account from "./components/account.js";
 import menu from "./components/menu.js";
 import sort from "./components/sort.js";
-import films from "./components/films.js";
+
 
 const doc = document;
 const $header = doc.querySelector(`.header`);
 const $main = doc.querySelector(`.main`);
+const $films = doc.querySelector(`.films`);
 
-const renderHTML = function (inner, target) {
+const renderBefore = function (inner, target) {
+  const element = document.createElement(`template`);
+  element.innerHTML = inner();
+  target.insertBefore(element.content, $films);
+};
+const renderAppend = function (inner, target) {
   const element = document.createElement(`template`);
   element.innerHTML = inner();
   target.appendChild(element.content);
 };
 
 const renderComponents = () => {
-  renderHTML(search, $header);
-  renderHTML(account, $header);
-  renderHTML(menu, $main);
-  renderHTML(sort, $main);
-  renderHTML(films, $main);
+  renderAppend(search, $header);
+  renderAppend(account, $header);
+  renderBefore(menu, $main);
+  renderBefore(sort, $main);
+
+  storage.getMovies();
+  storage.getMoviesExtraLeft();
+  storage.getMoviesExtraRight();
 };
 
-renderComponents(); // временно
