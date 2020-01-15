@@ -5,14 +5,6 @@ import menu from "./components/menu.js";
 import sort from "./components/sort.js";
 
 
-const AUTHORIZATION = `Basic er883jdzbdw=${Math.random()}`;
-const END_POINT = `https://htmlacademy-es-9.appspot.com/cinemaddict/`;
-const storage = new API({
-  endPoint: END_POINT,
-  authorization: AUTHORIZATION
-});
-
-
 const doc = document;
 const $header = doc.querySelector(`.header`);
 const $main = doc.querySelector(`.main`);
@@ -40,8 +32,3 @@ const renderComponents = () => {
   storage.getMoviesExtraRight();
 };
 
-
-
-renderComponents();
-
-storage.getComments(5);
