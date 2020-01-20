@@ -1,15 +1,14 @@
 import {
   createElement
-} from "../utils";
+} from "../utils/render";
 
 export class Component {
   constructor() {
     if (new.target === Component) {
-      throw new Error(`Can't instantiate Component, only concrete one.`);
+      throw new Error(`Can't instantiate AbstractComponent, only concrete one.`);
     }
 
     this._element = null;
-    // this._state = {};
   }
 
   get element() {
@@ -17,7 +16,7 @@ export class Component {
   }
 
   get template() {
-    throw new Error(`You have to define template.`);
+    throw new Error(`Abstract method not implemented: getTemplate`);
   }
 
   bind() { }

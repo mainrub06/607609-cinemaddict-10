@@ -1,6 +1,6 @@
 import {
   Component
-} from "./component.js";
+} from "./abstract-component";
 
 export class CardDetail extends Component {
   constructor(data) {
@@ -84,7 +84,7 @@ export class CardDetail extends Component {
   }
 
   get template() {
-    return /* html*/ `
+    return `
       <section class="film-details">
   <form class="film-details__inner" action="" method="get">
     <div class="form-details__top-container">

@@ -1,18 +1,24 @@
 import {
     Component
-} from "./objects/component";
+} from "./components/abstract-component";
 import {
     Card
-} from "./objects/card";
+} from "./components/card";
 import {
     createElement
 } from "./utils";
 import {
     CardDetail
-} from "./objects/cardDetail.js";
+} from "./components/cardDetail.js";
 import {
     removeElement
 } from "./utils.js";
+
+
+import { User } from "./components/user";
+import { Search } from "./components/search";
+import { Menu } from "./components/menu";
+import { Sort } from "./components/sort";
 
 
 export class PageController extends Component {
@@ -22,6 +28,29 @@ export class PageController extends Component {
 
         this._visibleElements = 5;
         this._element = null;
+    }
+
+    renderElements() {
+        const doc = document;
+        const $header = doc.querySelector(`.header`);
+        const $main = doc.querySelector(`.main`);
+        const $films = doc.querySelector(`.films`);
+
+        const UserEl = new User();
+        const SearchEl = new Search();
+        const MenuEl = new Menu();
+        const SortEl = new Sort();
+        MenuEl.render();
+        UserEl.render();
+        SearchEl.render();
+        SortEl.render();
+        // add components
+        $header.appendChild(SearchEl.element);
+        $header.appendChild(UserEl.element);
+        $main.insertBefore(MenuEl.element, $films);
+        $main.insertBefore(SortEl.element, $films);
+        // add film-list
+
     }
 
     renderCards(data) {
@@ -105,6 +134,7 @@ export class PageController extends Component {
 
 
     init() {
+        this.renderElements();
         this.renderCards(this._cards);
     }
 
